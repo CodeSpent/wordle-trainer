@@ -1,5 +1,7 @@
 <template>
 
+  <h1 class="header">Wordle Trainer</h1>
+
   <div style="display: flex; flex-direction: column;">
     <h2>Select Letter Count</h2>
 
@@ -58,15 +60,27 @@ export default {
 </script>
 
 <style scoped>
+.header {
+  margin: auto;
+  font-size: 48px;
+  font-style: italic;
+  border-style: solid;
+  border-width: 0 0 4px 0;
+  padding-bottom: 1px;
+  width: fit-content;
+  border-image: linear-gradient(45deg, #6aaa64, #c9b458) 1;
+}
 
 .letter-input {
   width: 50px;
-  height: 50px;
+  height: 60px;
   text-align: center;
   font-size: 24px;
   margin: 5px;
   color: #fff;
   text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
 }
 
 .multiple {
@@ -74,15 +88,14 @@ export default {
 }
 
 .correct {
-  background-color: green;
+  background-color: #6aaa64;
 }
 
 .misplaced {
-  background-color: orange;
+  background-color: #c9b458;
 }
 
 .wrong {
-  background-color: gray;
+  background-color: #787c7e;
 }
-
 </style>
