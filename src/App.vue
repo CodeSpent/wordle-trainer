@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <WordInput/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import WordInput from "@/components/WordInput";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    WordInput,
   }
 }
 </script>
@@ -20,7 +19,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
   margin-top: 60px;
+}
+
+html {
+  background-color: rgb(32, 32, 32);
 }
 </style>
