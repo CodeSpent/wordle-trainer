@@ -1,4 +1,13 @@
 <template>
+
+  <div style="display: flex; flex-direction: column;">
+    <h2>Select Letter Count</h2>
+
+    <select v-model="letterCount" style="width: 100px; margin: auto;">
+      <option v-for="i in levels" :value="i" :key="i">{{ i }}</option>
+    </select>
+  </div>
+
   <div style="display: flex; flex-direction: column;">
     <h2>Correct Letters</h2>
 
@@ -31,7 +40,8 @@ export default {
   name: "WordInput",
   data() {
     return {
-      letterCount: 5
+      letterCount: 5,
+      levels: [5, 6, 7, 8, 9, 10]
     }
   }
 }
