@@ -12,7 +12,8 @@
     <h2>Correct Letters</h2>
 
     <div style="display: flex; margin: auto;">
-      <input class="letter-input correct" v-for="i in letterCount" :key="i" maxlength="1">
+      <input class="letter-input correct" v-for="(i, n) in letterCount" :key="i" v-model="correctLetters[n]"
+             maxlength="1">
     </div>
   </div>
 
@@ -20,7 +21,8 @@
     <h2>Misplaced Letters</h2>
 
     <div style="display: flex; margin: auto;">
-      <input class="letter-input misplaced" v-for="i in letterCount" :key="i" maxlength="1">
+      <input class="letter-input misplaced" v-for="(i, n) in letterCount" :key="i" v-model="misplacedLetters[n]"
+             maxlength="1">
     </div>
   </div>
 
@@ -28,7 +30,7 @@
     <h2>Excluded Letters</h2>
 
     <div style="display: flex; margin: auto;">
-      <input class="letter-input multiple wrong">
+      <input class="letter-input multiple wrong" v-model="wrongLetters">
     </div>
   </div>
 
@@ -41,7 +43,15 @@ export default {
   data() {
     return {
       letterCount: 5,
-      levels: [5, 6, 7, 8, 9, 10]
+      levels: [5, 6, 7, 8, 9, 10],
+      correctLetters: [],
+      misplacedLetters: [],
+      wrongLetters: ""
+    }
+  },
+  computed: {
+    excludedLetters() {
+      return this.wrongLetters.split("")
     }
   }
 }
