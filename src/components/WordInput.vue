@@ -37,9 +37,15 @@
   </div>
 
   <h2>Potential Words:</h2>
+  <div style="display: flex;">
+    <span v-for="word in potentialWords" :key="word">{{ word }}, </span>
+  </div>
+
 </template>
 
 <script>
+import {words} from '@/data/words';
+
 export default {
   name: "WordInput",
   data() {
@@ -48,13 +54,36 @@ export default {
       levels: [5, 6, 7, 8, 9, 10],
       correctLetters: [],
       misplacedLetters: [],
-      wrongLetters: ""
+      wrongLetters: "",
     }
   },
   computed: {
     excludedLetters() {
       return this.wrongLetters.split("")
+    },
+    potentialWords() {
+      return this.fetchPotentialWords()
     }
+  },
+  watch: {
+    correctLetters: {
+      handler: function () {
+        this.fetchPotentialWords()
+      },
+      deep: true
+    }
+  },
+  methods: {
+    fetchPotentialWords() {
+      return words
+          .filter(word =>
+              (word.length === this.letterCount) &&
+              (this.correctLetters.every((letter, i) => !letter || word[i] === letter)) &&
+              (this.misplacedLetters.every((letter, i) => !letter || word.includes(letter.toLowerCase()) && word[i] !== letter)) &&
+              (this.excludedLetters.every(letter => !word.includes(letter.toLowerCase())))
+          );
+    }
+
   }
 }
 </script>
