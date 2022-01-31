@@ -77,9 +77,13 @@ export default {
     fetchPotentialWords() {
       return words
           .filter(word =>
+              // Verify word is correct length
               (word.length === this.letterCount) &&
+              // Verify that letters are in the correct index in the word
               (this.correctLetters.every((letter, i) => !letter || word[i] === letter)) &&
+              // Verify that misplaced letters are in the word, but not at current index
               (this.misplacedLetters.every((letter, i) => !letter || word.includes(letter.toLowerCase()) && word[i] !== letter)) &&
+              // Verify that excluded letters are not in the word at all
               (this.excludedLetters.every(letter => !word.includes(letter.toLowerCase())))
           );
     }
