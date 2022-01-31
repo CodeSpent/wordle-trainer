@@ -37,8 +37,8 @@
   </div>
 
   <h2>Potential Words:</h2>
-  <div style="display: flex;">
-    <span v-for="word in potentialWords" :key="word">{{ word }}, </span>
+  <div style="display: flex; width: 100%; flex-wrap: wrap;">
+    <span v-for="word in potentialWords" :key="word" class="word">{{ word }}, </span>
   </div>
 
 </template>
@@ -130,5 +130,13 @@ export default {
 
 .wrong {
   background-color: #787c7e;
+}
+
+.word {
+  padding: 5px;
+  background-color: #42b983;
+  border-radius: 10px;
+  margin: 5px;
+
 }
 </style>
