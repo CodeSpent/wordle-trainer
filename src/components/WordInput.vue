@@ -35,10 +35,9 @@
       <input class="letter-input multiple wrong" v-model="wrongLetters">
     </div>
   </div>
-
   <h2>Potential Words ({{ potentialWords.length }}):</h2>
   <div style="display: flex; width: 100%; flex-wrap: wrap;">
-    <span v-for="word in potentialWords" :key="word" class="word">{{ word }}, </span>
+    <span v-for="word in potentialWords" :key="word" class="word">{{ word }}</span>
   </div>
 
 </template>
@@ -63,7 +62,7 @@ export default {
     },
     potentialWords() {
       return this.fetchPotentialWords()
-    }
+    },
   },
   watch: {
     correctLetters: {
